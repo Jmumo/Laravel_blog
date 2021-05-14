@@ -62,12 +62,17 @@
                             </span>
                         </a>
                         <ul class="primary-menu-menu text-capitalize" style="overflow: hidden;">
+                            @if ($categories)
                             @foreach ($categories as $category)
                             <li class="">
                                 <a href="{{ route('category.single',['id' => $category->id])}}">{{$category->name}}</a>
                             </li>
                                 
                             @endforeach
+                            @else
+                                no categories yet 
+                            @endif
+            
                             
                         </ul>
                     </nav>
@@ -91,6 +96,8 @@
                 <article class="hentry post post-standard has-post-thumbnail sticky">
 
                         <div class="post-thumb">
+                            @if ($first_post)
+                                
                             <img src="{{$first_post->featured}}" alt="seo">
                             <div class="overlay"></div>
                             <a href="{{$first_post->featured}}" class="link-image js-zoom-image">
@@ -133,6 +140,9 @@
 
                                     </div>
                             </div>
+                            @else
+                                 no post available
+                            @endif
                         </div>
 
                 </article>
@@ -142,6 +152,8 @@
 
         <div class="row">
             <div class="col-lg-6">
+                @if ($second_post)
+
                 <article class="hentry post post-standard has-post-thumbnail sticky">
 
                         <div class="post-thumb">
@@ -190,8 +202,12 @@
                         </div>
 
                 </article>
+                @else
+                    no post availabl yet
+                @endif
             </div>
             <div class="col-lg-6">
+                @if ($third_post)
                 <article class="hentry post post-standard has-post-thumbnail sticky">
 
                         <div class="post-thumb">
@@ -240,6 +256,9 @@
                         </div>
 
                 </article>
+                 @else
+                    no post available
+                @endif
             </div>
         </div>
     </div>
@@ -250,7 +269,8 @@
             <div class="container">
                 <div class="col-lg-12">
                 <div class="offers">
-                    <div class="row">
+                    @if ($first_category)
+                        <div class="row">
                         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                             <div class="heading">
                                 <h4 class="h1 heading-title">{{$first_category->name}}</h4>
@@ -260,7 +280,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> 
+                   
+                   
                     
                     
                     <div class="row">
@@ -280,9 +302,15 @@
                         
                   
 
-                            
+                        @else
+                       no categories available 
+                    @endif     
                     
                    
+
+                    @if ($second_category)
+                        
+                    
                 <div class="padded-50"></div>
                 <div class="offers">
                     <div class="row">
@@ -313,9 +341,14 @@
                         </div>
                     </div>
                         
-                   
+                   @else
+                       no categories yet 
+                    @endif
 
                    
+                    @if ($third_category)
+                        
+                    
                    <div class="padded-50"></div>
                    <div class="offers">
                     <div class="row">
@@ -357,6 +390,9 @@
                             
                           </div>
                      </div>
+                     @else
+                         no posts yet
+                    @endif
                    </div>  
                    <div class="padded-50"></div>
                </div>
