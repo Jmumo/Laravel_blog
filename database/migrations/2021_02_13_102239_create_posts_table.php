@@ -18,7 +18,6 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->string('slug');
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->string('featured');
             $table->softDeletes();
             $table->timestamps();
